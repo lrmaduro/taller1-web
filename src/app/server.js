@@ -2,6 +2,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import express, { json } from 'express';
+import indexRouter from '../routes/index.routes.js';
 
 const app = express();
 app.set('port', 3000);
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
     msg: "Server up"
   });
 })
+app.use("/api", indexRouter);
 
 
 export default app;
