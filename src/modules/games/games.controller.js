@@ -4,7 +4,8 @@ const validateGame = (game) => {
     const keys = ["name", "minPlayers", "maxPlayers", "duration", "gameState"]
     for (let key of keys) {
         if (game[key] == null || (typeof(game[key]) == "string" && game[key].trim() == "") || game[key] <= 0) return false;
-        if ((key == "maxPlayers" || key == "minPlayers" || key == "duration") && isNaN(game[key])) return false;
+        else if ((key == "maxPlayers" || key == "minPlayers" || key == "duration") && isNaN(game[key])) return false;
+        else if (game["minPlayers"] > game["maxPlayers"]) return false;
         
     }
     return true;
